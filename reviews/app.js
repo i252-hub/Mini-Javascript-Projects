@@ -31,3 +31,62 @@ const reviews = [
   ];
   
 
+//previous btn
+//next btn
+//random btn
+
+const next = document.querySelector('.next-btn');
+const prev = document.querySelector('.prev-btn');
+const random = document.querySelector('.random-btn');
+//
+const img = document.querySelector('.img-container img');
+const author = document.querySelector('#author');
+const job = document.querySelector("#job");
+const info = document.querySelector("#info");
+let currIndex = 0;
+
+// Function to update the review display
+function updateReview() {
+    const review = reviews[currIndex];
+    img.src = review.img; // Update image source
+    author.textContent = review.name;
+    job.textContent = review.job;
+    info.textContent = review.text;
+ }
+ 
+ // Event listeners
+ next.addEventListener("click", () => {
+    currIndex++;
+    if (currIndex > reviews.length - 1) {
+        currIndex = 0;
+    }
+    updateReview();
+ });
+
+ prev.addEventListener("click", () => {
+    currIndex--;
+    if (currIndex < 0) {
+        currIndex = reviews.length - 1;
+    }
+    updateReview();
+ });
+
+ let lastIndex = -1; 
+
+random.addEventListener("click", () => {
+    let newIndex;
+
+    
+    do {
+        newIndex = Math.floor(Math.random() * reviews.length);
+        console.log('Generated Index:', newIndex); 
+    } while (newIndex === lastIndex);
+    
+  
+    
+    lastIndex = newIndex; 
+    currIndex = newIndex;
+    
+    updateReview();
+});
+ updateReview();
