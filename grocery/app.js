@@ -20,7 +20,6 @@ const add = () => {
         const li = document.createElement('li');
         li.innerHTML = `
           ${itemText}
-          <button class="edit-btn"><i class="fas fa-edit"></i></button>
           <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
         `;
         list.appendChild(li);
